@@ -1,4 +1,5 @@
 import { sendRequest, getToken } from './api.js';
+import { handleLogin, handleRegister } from './auth.js';
 
 // Инициализация форм
 export const initForms = () => {
