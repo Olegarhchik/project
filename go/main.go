@@ -17,6 +17,14 @@ func main() {
 			coursesHandler(w, r)
 		case "/profile":
 			profileHandler(w, r)
+		case "/auth":
+			tab := r.URL.Query().Get("tab")
+
+			if tab == "register" {
+				registerHandler(w, r)
+			} else {
+				loginHandler(w, r)
+			}
 		}
 	}))
 }

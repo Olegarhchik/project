@@ -37,5 +37,5 @@ const updateAuthState = () => {
 // Выход из системы
 window.logout = () => {
   localStorage.removeItem('token');
-  window.location.href = '/cgi/main.cgi';
+  window.location.href = '/main.cgi';
 };

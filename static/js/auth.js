@@ -39,7 +39,7 @@ export const handleLogin = async (e) => {
   
   if (response.token) {
     saveToken(response.token);
-    window.location.href = '/cgi/main.cgi/profile';
+    window.location.href = '/main.cgi/profile';
   } else {
     showFormErrors(form, response.errors);
   }
