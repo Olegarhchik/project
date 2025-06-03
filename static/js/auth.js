@@ -7,9 +7,7 @@ export const initAuthTabs = () => {
   
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-      const url = new URL(window.location.href);  
-      const params = new URLSearchParams(url.search);
-      const tabName = params.get('tab') || tab.dataset.tab;
+      const tabName = tab.dataset.tab;
       
       // Обновление активной вкладки
       tabs.forEach(t => t.classList.remove('auth-tab--active'));
@@ -24,6 +22,23 @@ export const initAuthTabs = () => {
       });
     });
   });
+
+  const url = new URL(window.location.href);  
+  const params = new URLSearchParams(url.search);
+
+  if (params.get('tab') === 'register') {
+    tabs.forEach(tab => {
+      if (tab.dataset.tab === 'register') {
+        tab.click();
+      }
+    });
+  } else {
+    tabs.forEach(tab => {
+      if (tab.dataset.tab === 'login') {
+        tab.click();
+      }
+    });
+  }
 };
 
 // Обработка входа
