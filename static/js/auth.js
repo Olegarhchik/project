@@ -7,7 +7,9 @@ export const initAuthTabs = () => {
   
   tabs.forEach(tab => {
     tab.addEventListener('click', () => {
-      const tabName = new URLSearchParams().get('tab') || tab.dataset.tab;
+      const url = new URL(window.location.href);  
+      const params = new URLSearchParams(url.search);
+      const tabName = params.get('tab') || tab.dataset.tab;
       
       // Обновление активной вкладки
       tabs.forEach(t => t.classList.remove('auth-tab--active'));
