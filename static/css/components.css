@@ -92,3 +92,127 @@
   background-color: rgba(231, 76, 60, 0.2);
   border: 1px solid #e74c3c;
 }
+
+/* Стили для страницы курсов */
+.page-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: var(--accent);
+}
+
+.filters {
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+}
+
+.filter-group {
+  display: inline-block;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.filter-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.filter-select {
+  padding: 0.6rem;
+  border-radius: var(--border-radius);
+  background-color: var(--primary);
+  color: var(--light);
+  border: 1px solid var(--secondary);
+}
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.course-card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s;
+}
+
+.course-card:hover {
+  transform: translateY(-5px);
+}
+
+.course-card__header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  background-color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.course-card__level--beginner {
+  color: #2ecc71;
+}
+
+.course-card__level--intermediate {
+  color: #f39c12;
+}
+
+.course-card__level--advanced {
+  color: #e74c3c;
+}
+
+.course-card__body {
+  padding: 1.5rem;
+  flex-grow: 1;
+}
+
+.course-card__title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--light);
+}
+
+.course-card__description {
+  color: var(--secondary);
+  margin-bottom: 1.5rem;
+}
+
+.course-card__meta {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--secondary);
+}
+
+.course-card__meta .icon {
+  vertical-align: middle;
+  margin-right: 0.3rem;
+}
+
+.course-card__footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--primary);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course-card__progress {
+  flex-grow: 1;
+  margin-left: 1rem;
+  height: 6px;
+  border-radius: 3px;
+}
+
+.course-card__price {
+  font-weight: bold;
+  color: var(--accent);
+}

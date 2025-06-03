@@ -1,0 +1,93 @@
+{{define "content"}}
+<h1 class="page-title">Наши курсы</h1>
+
+<div class="filters mb-3">
+  <form id="filter-form" action="main.cgi/courses" method="GET">
+    <div class="filter-group">
+      <label for="filter-level" class="filter-label">Уровень:</label>
+      <select id="filter-level" name="level" class="filter-select">
+        <option value="">Все уровни</option>
+        <option value="beginner">Начинающий</option>
+        <option value="intermediate">Средний</option>
+        <option value="advanced">Продвинутый</option>
+      </select>
+    </div>
+    
+    <div class="filter-group">
+      <label for="filter-category" class="filter-label">Категория:</label>
+      <select id="filter-category" name="category" class="filter-select">
+        <option value="">Все категории</option>
+        <option value="web">Веб-разработка</option>
+        <option value="mobile">Мобильная разработка</option>
+        <option value="data">Анализ данных</option>
+        <option value="game">Разработка игр</option>
+      </select>
+    </div>
+    
+    <button type="submit" class="button button--secondary">Применить</button>
+  </form>
+</div>
+
+<div class="courses-grid">
+  {{range .Courses}}
+  <div class="course-card">
+    <div class="course-card__header">
+      <span class="course-card__level course-card__level--{{.Level}}">{{.LevelName}}</span>
+      <span class="course-card__category">{{.CategoryName}}</span>
+    </div>
+    
+    <div class="course-card__body">
+      <h3 class="course-card__title">{{.Title}}</h3>
+      <p class="course-card__description">{{.ShortDescription}}</p>
+      
+      <div class="course-card__meta">
+        <div class="course-card__duration">
+          <svg class="icon" width="16" height="16" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.2 3.2.8-1.3-4.5-2.7V7z"/>
+          </svg>
+          {{.Duration}} часов
+        </div>
+        
+        <div class="course-card__rating">
+          <svg class="icon" width="16" height="16" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+          </svg>
+          {{.Rating}}/5
+        </div>
+      </div>
+    </div>
+    
+    <div class="course-card__footer">
+      {{if .IsEnrolled}}
+        <a href="main.cgi/course/{{.ID}}" class="button button--primary">Продолжить</a>
+        <progress class="course-card__progress" value="{{.Progress}}" max="100"></progress>
+      {{else}}
+        <button class="button button--primary" onclick="enrollCourse('{{.ID}}')">Записаться</button>
+        <span class="course-card__price">{{if .Price}}{{.Price}} ₽{{else}}Бесплатно{{end}}</span>
+      {{end}}
+    </div>
+  </div>
+  {{end}}
+</div>
+
+<script>
+function enrollCourse(courseId) {
+  fetch('main.cgi/courses/enroll', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+    },
+    body: JSON.stringify({ course_id: courseId })
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      location.reload();
+    } else {
+      alert(data.error || 'Ошибка записи на курс');
+    }
+  });
+}
+</script>
+{{end}}
