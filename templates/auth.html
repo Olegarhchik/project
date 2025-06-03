@@ -1,0 +1,48 @@
+{{define "content"}}
+<div class="auth-container">
+  <div class="auth-tabs">
+    <button class="auth-tab auth-tab--active" data-tab="login">Вход</button>
+    <button class="auth-tab" data-tab="register">Регистрация</button>
+  </div>
+
+  <form id="login-form" class="auth-form auth-form--active" 
+        action="/cgi/main.cgi/auth/login" method="POST">
+    <div class="form-group">
+      <label for="login-email" class="form-label">Email</label>
+      <input type="email" id="login-email" name="email" class="form-input" required>
+      <div class="form-error" data-for="email"></div>
+    </div>
+    
+    <div class="form-group">
+      <label for="login-password" class="form-label">Пароль</label>
+      <input type="password" id="login-password" name="password" class="form-input" required>
+      <div class="form-error" data-for="password"></div>
+    </div>
+    
+    <button type="submit" class="button button--primary">Войти</button>
+  </form>
+
+  <form id="register-form" class="auth-form" 
+        action="/cgi/main.cgi/auth/register" method="POST">
+    <div class="form-group">
+      <label for="register-name" class="form-label">Имя</label>
+      <input type="text" id="register-name" name="name" class="form-input" required>
+      <div class="form-error" data-for="name"></div>
+    </div>
+    
+    <div class="form-group">
+      <label for="register-email" class="form-label">Email</label>
+      <input type="email" id="register-email" name="email" class="form-input" required>
+      <div class="form-error" data-for="email"></div>
+    </div>
+    
+    <div class="form-group">
+      <label for="register-password" class="form-label">Пароль</label>
+      <input type="password" id="register-password" name="password" class="form-input" required>
+      <div class="form-error" data-for="password"></div>
+    </div>
+    
+    <button type="submit" class="button button--primary">Зарегистрироваться</button>
+  </form>
+</div>
+{{end}}

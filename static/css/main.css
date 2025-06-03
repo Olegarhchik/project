@@ -1,0 +1,67 @@
+/* Главный файл стилей */
+@import url('base.css');
+@import url('layout.css');
+@import url('components.css');
+
+/* Дополнительные стили */
+.header__logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+.nav__list {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.nav__link {
+  font-weight: bold;
+  padding: 0.5rem;
+  border-radius: var(--border-radius);
+  transition: background-color 0.2s;
+}
+
+.nav__link:hover {
+  background-color: rgba(237, 242, 244, 0.1);
+}
+
+.auth-container {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: var(--card-bg);
+  padding: 2rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+.auth-tabs {
+  display: flex;
+  margin-bottom: 1.5rem;
+  gap: 0.5rem;
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 0.8rem;
+  background-color: var(--primary);
+  border: none;
+  color: var(--light);
+  font-family: inherit;
+  font-weight: bold;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+
+.auth-tab--active {
+  background-color: var(--accent);
+}
+
+.auth-form {
+  display: none;
+}
+
+.auth-form--active {
+  display: block;
+}
