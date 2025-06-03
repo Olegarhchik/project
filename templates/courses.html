@@ -2,7 +2,7 @@
 <h1 class="page-title">Наши курсы</h1>
 
 <div class="filters mb-3">
-  <form id="filter-form" action="main.cgi/courses" method="GET">
+  <form id="filter-form" action="/main.cgi/courses" method="GET">
     <div class="filter-group">
       <label for="filter-level" class="filter-label">Уровень:</label>
       <select id="filter-level" name="level" class="filter-select">
@@ -59,7 +59,7 @@
     
     <div class="course-card__footer">
       {{if .IsEnrolled}}
-        <a href="main.cgi/course/{{.ID}}" class="button button--primary">Продолжить</a>
+        <a href="/main.cgi/course/{{.ID}}" class="button button--primary">Продолжить</a>
         <progress class="course-card__progress" value="{{.Progress}}" max="100"></progress>
       {{else}}
         <button class="button button--primary" onclick="enrollCourse('{{.ID}}')">Записаться</button>
@@ -72,7 +72,7 @@
 
 <script>
 function enrollCourse(courseId) {
-  fetch('main.cgi/courses/enroll', {
+  fetch('/main.cgi/courses/enroll', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
