@@ -8,6 +8,11 @@
   --card-bg: #1e1f29;
   --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
   --border-radius: 4px;
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+  --spacing-xl: 3rem;
 }
 
 * {
